@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { lessons } from "@/data/lessons";
+import SearchInput from "@/components/SearchInput";
 
 export default function Lessons() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,7 +14,7 @@ export default function Lessons() {
     const term = event.target.value.toLowerCase();
     setSearchTerm(term);
     const filtered = lessons.filter((lessons) =>
-      lessons.title.toLowerCase().includes(term),
+      lessons.title.toLowerCase().includes(term)
     );
     setFilteredLessons(filtered);
   };
@@ -25,21 +26,11 @@ export default function Lessons() {
           Rust Lessons
         </h1>
 
-        <div className="mb-8 max-w-md mx-auto">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search lessons..."
-              value={searchTerm}
-              onChange={handleSearch}
-              className="w-full p-3 pl-10 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-            <Search
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-              size={20}
-            />
-          </div>
-        </div>
+        <SearchInput
+          placeholder="Search lessons..."
+          value={searchTerm}
+          onChange={handleSearch}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredLessons.map((lesson, index) => (
