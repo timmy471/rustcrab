@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import { dsas, DSA } from "@/data/dsa"; // Update the path to your data
-import { Search } from "lucide-react";
 import { FaCopy } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import SearchInput from "@/components/SearchInput";
 
 const DSAPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +20,7 @@ const DSAPage: React.FC = () => {
     const filtered = dsas.filter(
       (dsa) =>
         dsa.data_structure.toLowerCase().includes(term) ||
-        dsa.description.toLowerCase().includes(term),
+        dsa.description.toLowerCase().includes(term)
     );
     setFilteredDSAs(filtered);
   };
@@ -52,21 +52,11 @@ const DSAPage: React.FC = () => {
           Data Structures in Rust
         </h1>
 
-        <div className="mb-8 max-w-md mx-auto">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search data structures..."
-              value={searchTerm}
-              onChange={handleSearch}
-              className="w-full p-3 pl-10 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-            <Search
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-              size={20}
-            />
-          </div>
-        </div>
+        <SearchInput
+          placeholder="Search data structures..."
+          value={searchTerm}
+          onChange={handleSearch}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredDSAs.map((dsa, index) => (
