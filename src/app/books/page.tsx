@@ -29,11 +29,13 @@ export default function Books() {
           Books to Learn Rust
         </h1>
 
-        <SearchInput
-          placeholder="Search books..."
-          value={searchTerm}
-          onChange={handleSearch}
-        />
+        <div className="mb-8 max-w-md mx-auto">
+          <SearchInput
+            placeholder="Search books..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+        </div>
         <div className="grid md:grid-cols-2 w-full gap-5">
           {filteredBooks.map((book, index) => (
             <Card item={book} key={index} />

@@ -52,12 +52,13 @@ const DSAPage: React.FC = () => {
           Data Structures in Rust
         </h1>
 
-        <SearchInput
-          placeholder="Search data structures..."
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-
+        <div className="mb-8 max-w-md mx-auto">
+          <SearchInput
+            placeholder="Search data structures..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredDSAs.map((dsa, index) => (
             <div

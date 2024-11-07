@@ -27,12 +27,13 @@ export default function DevTools() {
           Rust Developer Tools
         </h1>
 
-        <SearchInput
-          placeholder="Search tools..."
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-
+        <div className="mb-8 max-w-md mx-auto">
+          <SearchInput
+            placeholder="Search tools..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-5">
           {filteredTools.map((tool, index) => (
             <Card item={tool} key={index} />
